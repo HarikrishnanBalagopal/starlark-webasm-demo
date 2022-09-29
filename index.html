@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlark Interpreter using Web Assembly</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: monospace;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: min-content 1fr;
+            background-color: #eeeeee;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1em;
+            gap: 1em;
+        }
+
+        header>a {
+            word-break: break-word;
+        }
+
+        .split {
+            width: 100%;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 1em;
+            padding: 1em;
+        }
+
+        textarea {
+            box-shadow: 1 1 1 1 aqua;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+        }
+
+        @media (min-width: 900px) {
+            .split {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+            }
+        }
+
+        #button-run {
+            width: 100%;
+            font-size: 2em;
+            height: 2em;
+            background-color: lightgreen;
+        }
+
+        #starlark-output {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Starlark Interpreter using Web Assembly</h1>
+        <a target="_blank" href="https://github.com/HarikrishnanBalagopal/starlark-webasm-demo">
+            https://github.com/HarikrishnanBalagopal/starlark-webasm-demo
+        </a>
+        <a target="_blank"
+            href="https://github.com/bazelbuild/starlark/blob/c63d43647e651381fde7fbe004b0ac1a726a4240/spec.md">
+            https://github.com/bazelbuild/starlark/blob/c63d43647e651381fde7fbe004b0ac1a726a4240/spec.md
+        </a>
+        <button id="button-run">▶</button>
+    </header>
+    <div class="split">
+        <textarea id="starlark-input" spellcheck="false"></textarea>
+        <textarea id="starlark-output" spellcheck="false"></textarea>
+    </div>
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+
+</html>

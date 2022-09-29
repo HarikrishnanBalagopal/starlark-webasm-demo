@@ -1,0 +1,13 @@
+{
+  "name": "starlark-webasm-demo",
+  "version": "1.0.0",
+  "description": "A demo of a Starlark interpreter running as web assembly module.",
+  "main": "index.js",
+  "packageManager": "pnpm@7.12.2",
+  "scripts": {
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0"
+}
