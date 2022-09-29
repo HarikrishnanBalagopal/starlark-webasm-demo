@@ -20,8 +20,13 @@ def main():
 `;
 
 async function main() {
+    const loading_screen = document.querySelector('.loading');
+    const main_content = document.querySelector('#main-content');
     const resp = await fetch('assets/wasm/main.wasm', { headers: { 'Accept': 'application/wasm' } });
-    if (!resp.ok) return console.error('failed to fetch the starlark web assembly module. status:', resp.statusText);
+    if (!resp.ok) {
+        loading_screen.innerHTML = '<h1 class="error">Failed to load the web assembly module.</h1>';
+        return console.error('failed to fetch the starlark web assembly module. status:', resp.statusText);
+    }
     const moduleBytes = await resp.arrayBuffer();
     const go = new Go();
     const module = await WebAssembly.instantiate(moduleBytes, go.importObject);
@@ -29,6 +34,9 @@ async function main() {
 
     const starlark_input = document.querySelector('#starlark-input');
     starlark_input.value = INITIAL_STARLARK_CODE;
+    loading_screen.classList.add('hidden');
+    main_content.classList.remove('hidden');
+    console.log('loaded');
     const starlark_output = document.querySelector('#starlark-output');
     const button_run = document.querySelector('#button-run');
     button_run.addEventListener('click', () => {
